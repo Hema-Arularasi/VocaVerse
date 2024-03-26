@@ -1,0 +1,9 @@
+StudySyncWebApp/
+|-- static/
+|   |-- audio/
+|-- templates/
+|   |-- index.html
+|   |-- result.html
+|   |-- quiz.html
+|-- study_sync.py
+|-- app.py
