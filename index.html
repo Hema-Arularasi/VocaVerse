@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to StudySync Web App</h1>
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="file_type">Choose a file type:</label>
+        <select name="file_type" id="file_type" required>
+            <option value="" selected disabled>Select File Type</option>
+            <option value="pdf">PDF</option>
+            <option value="ppt">PPT</option>
+            <option value="txt">TXT</option>
+            <option value="topic">Topic</option>
+        </select>
+
+        <label for="file_path">Enter the file path:</label>
+        <input type="text" name="file_path" id="file_path" required placeholder="Enter File Path">
+
+        <label for="create_audio">Create audio file?</label>
+        <input type="checkbox" name="create_audio" id="create_audio">
+
+        <div id="topic-section" style="display: none;">
+            <label for="theme">Enter the topic:</label>
+            <input type="text" name="theme" id="theme">
+
+            <label for="paragraph">Write a paragraph:</label>
+            <textarea name="paragraph" id="paragraph" rows="4"></textarea>
+        </div>
+
+        <input type="submit" value="Process">
+    </form>
+
+    <script>
+        document.getElementById('file_type').addEventListener('change', function() {
+            var topicSection = document.getElementById('topic-section');
+            if (this.value === 'topic') {
+                topicSection.style.display = 'block';
+            } else {
+                topicSection.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

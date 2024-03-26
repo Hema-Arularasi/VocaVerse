@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>StudySync Result</h1>
+    <section>
+        <h2>Extracted Text</h2>
+        <p>{{ text }}</p>
+    </section>
+
+    {% if theme %}
+    <section>
+        <h2>Theme</h2>
+        <p>{{ theme }}</p>
+        <h2>Paragraph</h2>
+        <p>{{ para }}</p>
+    </section>
+    {% endif %}
+
+    {% if audio_url %}
+    <section>
+        <h2>Audio File</h2>
+        <audio controls>
+            <source src="{{ audio_url }}" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <p>Audio file with extracted words created and saved.</p>
+    </section>
+    {% endif %}
+</body>
+</html>
